@@ -63,7 +63,7 @@
 			fileSystemSynchronizedGroups = (
 				268EC80F2F972FC200B6190A /* healing-pet-app */,
 			);
-			name = "healing-pet-app";
+			name = "Healing Pet";
 			packageProductDependencies = (
 			);
 			productName = "healing-pet-app";
