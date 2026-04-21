@@ -177,7 +177,6 @@ struct PetMainView: View {
             Spacer()
         }
         .frame(maxWidth: .infinity)
-        .frame(height: isCompact ? 150 : nil)
         .clipped()
     }
     
@@ -233,7 +232,7 @@ struct PetMainView: View {
                 .padding(.horizontal, 16)
                 .padding(.top, 8)
             }
-            .onChange(of: store.chatHistory.count) { _ in
+            .onChange(of: store.chatHistory.count) {
                 withAnimation { proxy.scrollTo("bottom") }
             }
         }
@@ -324,13 +323,7 @@ struct PetMainView: View {
     
     private func actionButton(icon: String, label: String, isActive: Bool, activeColor: Color, activeShadow: Color, action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            ZStack(alignment: .bottom) {
-                // 3D bottom layer (Duolingo raised effect)
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(isActive ? activeShadow : Color.appBorderDark)
-                    .frame(maxWidth: .infinity)
-                    .padding(.top, 4)
-                
+            VStack(spacing: 0) {
                 // Main button face
                 VStack(spacing: 6) {
                     Image(systemName: icon)
@@ -349,7 +342,6 @@ struct PetMainView: View {
                     RoundedRectangle(cornerRadius: 16)
                         .stroke(isActive ? activeColor : Color.appBorder, lineWidth: 2)
                 )
-                .padding(.bottom, 4)
             }
             .frame(height: 72)
         }
